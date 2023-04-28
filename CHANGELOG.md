@@ -5,4 +5,4 @@
 ### Added
 
 - Initial release of project
-- Includes create_js_branch, create_release, and extract_changelog workflows
+- Adds create_js_branch, create_release, and extract_changelog workflows
