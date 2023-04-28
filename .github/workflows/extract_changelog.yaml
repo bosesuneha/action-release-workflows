@@ -9,15 +9,12 @@ on:
         description: The path to the changelog
     outputs:
       version:
-        type: string
         description: The latest version in the changelog
         value: ${{ jobs.extract.outputs.version }}
       body:
-        type: string
         description: The body of the changelog
         value: ${{ jobs.extract.outputs.body }}
       prerelease:
-        type: boolean
         description: Whether the version is in prerelease
         value: ${{ jobs.extract.outputs.prerelease }}
 
