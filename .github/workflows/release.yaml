@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - CHANGELOG.md
+  workflow_dispatch:
 
 jobs:
   changelog:
@@ -23,6 +24,8 @@ jobs:
         id: tag-exists
         with:
           tag: ${{ needs.changelog.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   createRelease:
     needs: [checkVersion, changelog]
     runs-on: ubuntu-latest
