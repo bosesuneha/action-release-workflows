@@ -30,7 +30,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: ncipollo/release-action@a2e71bd # v1.12.0
+      - uses: ncipollo/release-action@a2e71bdd4e7dab70ca26a852f29600c98b33153e # v1.12.0
         with:
           name: ${{ github.event.inputs.version }}
           tag: ${{ github.event.inputs.version }}
