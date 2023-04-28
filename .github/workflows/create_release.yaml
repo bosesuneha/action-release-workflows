@@ -1,0 +1,39 @@
+name: create release
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+        description: The branch to release
+      version:
+        required: true
+        type: string
+        description: The version of the release
+      body:
+        required: true
+        type: string
+        description: The body of the release
+      prerelease:
+        required: false
+        default: false
+        type: boolean
+        description: Whether the release is a prerelease
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: ncipollo/release-action@a2e71bd # v1.12.0
+        with:
+          name: ${{ github.event.inputs.version }}
+          tag: ${{ github.event.inputs.version }}
+          body: ${{ github.event.inputs.body }}
+          commit: ${{ github.event.inputs.branch }}
+          prerelease: ${{ github.event.inputs.prerelease }}

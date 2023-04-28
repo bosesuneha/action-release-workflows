@@ -1,0 +1,36 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - CHANGELOG.md
+
+jobs:
+  changelog:
+    uses: ./.github/workflows/extract_changelog.yaml
+    with:
+      changelogPath: ./CHANGELOG.md
+  checkVersion:
+    needs: changelog
+    runs-on: ubuntu-latest
+    outputs:
+      exists: ${{ steps.tag-exists.outputs.exists }}
+    steps:
+      - name: check if tag exists
+        uses: mukunku/tag-exists-action@5dfe2b # v1.1.0
+        id: tag-exists
+        with:
+          tag: ${{ needs.changelog.outputs.version }}
+  createRelease:
+    needs: [checkVersion, changelog]
+    runs-on: ubuntu-latest
+    if: needs.checkVersion.outputs.exists == 'false'
+    steps:
+      - name: create release
+        uses: ./.github/workflows/create_release.yaml
+        with:
+          branch: ${{ github.ref }}
+          version: ${{ needs.changelog.outputs.version }}
+          body: ${{ needs.changelog.outputs.body }}
