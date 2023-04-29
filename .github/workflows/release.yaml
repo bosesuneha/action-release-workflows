@@ -28,6 +28,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   createRelease:
     needs: [checkVersion, changelog]
+    permissions:
+      contents: write
     if: needs.checkVersion.outputs.exists == 'false'
     uses: ./.github/workflows/create_release.yaml
     with:
