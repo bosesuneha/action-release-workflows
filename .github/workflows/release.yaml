@@ -28,12 +28,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   createRelease:
     needs: [checkVersion, changelog]
-    runs-on: ubuntu-latest
     if: needs.checkVersion.outputs.exists == 'false'
-    steps:
-      - name: create release
-        uses: ./.github/workflows/create_release.yaml
-        with:
-          branch: ${{ github.ref }}
-          version: ${{ needs.changelog.outputs.version }}
-          body: ${{ needs.changelog.outputs.body }}
+    uses: ./.github/workflows/create_release.yaml
+    with:
+      branch: ${{ github.ref }}
+      version: ${{ needs.changelog.outputs.version }}
+      body: ${{ needs.changelog.outputs.body }}
