@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.0.3] - 2023-05-16
+
+### Added
+- input params used correctly
+
 ## [0.0.2] - 2023-05-16
 
 ### Added
