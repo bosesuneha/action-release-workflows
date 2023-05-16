@@ -30,7 +30,7 @@ jobs:
     needs: [checkVersion, changelog]
     permissions:
       contents: write
-    if: jobs.checkVersion.outputs.exists == 'false'
+    if: needs.checkVersion.outputs.exists == 'false'
     uses: ./.github/workflows/create_release.yaml
     with:
       branch: ${{ github.ref }}
