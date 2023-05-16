@@ -31,11 +31,18 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      
+      - run: |
+          echo ${{ steps.changelog.outputs.version }}
+          echo ${{ github.event.inputs.version }}
+          echo ${{ github.event.inputs.prerelease }}
+          echo ${{ github.event.inputs.branch }}
+          echo ${{ github.ref }}
 
       - uses: ncipollo/release-action@a2e71bdd4e7dab70ca26a852f29600c98b33153e # v1.12.0
         with:
           name: ${{ steps.changelog.outputs.version }}
-          tag: 0.0.1
+          tag: ${{ github.event.inputs.version }}
           body: ${{ steps.changelog.outputs.body }}
           commit: ${{ github.ref }}
           prerelease: ${{ steps.changelog.outputs.status == 'prereleased' }}
