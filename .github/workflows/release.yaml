@@ -26,6 +26,14 @@ jobs:
           tag: ${{ needs.changelog.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  checkVars:
+    needs: changelog
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo ${{ needs.changelog.outputs.version }}
+        echo ${{ needs.changelog.outputs.body }}
+        echo ${{ github.ref }}
   createRelease:
     needs: [checkVersion, changelog]
     permissions:
