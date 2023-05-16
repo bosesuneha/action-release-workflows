@@ -30,9 +30,9 @@ jobs:
     needs: [checkVersion, changelog]
     permissions:
       contents: write
-    if: needs.checkVersion.outputs.exists == 'false'
+    if: jobs.checkVersion.outputs.exists == 'false'
     uses: ./.github/workflows/create_release.yaml
     with:
       branch: ${{ github.ref }}
-      version: ${{ needs.changelog.outputs.version }}
-      body: ${{ needs.changelog.outputs.body }}
+      version: ${{ jobs.changelog.outputs.version }}
+      body: ${{ jobs.changelog.outputs.body }}
