@@ -34,5 +34,5 @@ jobs:
     uses: ./.github/workflows/create_release.yaml
     with:
       branch: ${{ github.ref }}
-      version: ${{ jobs.changelog.outputs.version }}
-      body: ${{ jobs.changelog.outputs.body }}
+      version: ${{ needs.changelog.outputs.version }}
+      body: ${{ needs.changelog.outputs.body }}
