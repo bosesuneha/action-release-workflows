@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.0.3] - 2023-05-16
+
+### Added
+- input params used correctly
+
+## [0.0.2] - 2023-05-16
+
+### Added
+- working version params?
+
 ## [0.0.1] - 2023-04-28
 
 ### Added
