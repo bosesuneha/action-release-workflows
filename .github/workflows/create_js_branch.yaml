@@ -21,6 +21,7 @@ jobs:
 
       - name: guarantee branch doesn't exist
         run: |
+          echo $BRANCH
           if git ls-remote --heads origin ${BRANCH} ; then 
             exit 1
           else
