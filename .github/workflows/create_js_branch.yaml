@@ -47,6 +47,4 @@ jobs:
       - name: create branch
         run: |
           git checkout -b ${BRANCH}
-          git add .
-          git commit -m "release: ${BRANCH}"
           git push origin ${BRANCH}
