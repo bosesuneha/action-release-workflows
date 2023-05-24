@@ -22,8 +22,8 @@ jobs:
 
       - name: setup git config
         run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config user.name "Suneha Bose"
+          git config user.email "sunehabose@microsoft.com"
 
       - name: guarantee branch doesn't exist
         run: |
