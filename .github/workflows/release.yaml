@@ -7,7 +7,6 @@ on:
     paths:
       - CHANGELOG.md
   workflow_dispatch:
-  workflow_call:
 
 jobs:
   changelog:
