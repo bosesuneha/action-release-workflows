@@ -20,6 +20,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
       - name: guarantee branch doesn't exist
         run: |
           if git ls-remote --exit-code --heads origin ${BRANCH} ; then 
