@@ -32,15 +32,9 @@ jobs:
           else
             exit 0
           fi
-          
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
 
       - name: install dependencies
         run: |
-          rm -rf node_modules/
           npm install --no-bin-links
 
       - name: build
