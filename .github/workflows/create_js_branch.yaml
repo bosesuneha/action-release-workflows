@@ -45,7 +45,9 @@ jobs:
 
       - name: install dependencies
         run: |
+          rm -rf node_modules/
           npm install --no-bin-links
+          npm ls @vercel/ncc
 
       - name: build
         run: npm run build
