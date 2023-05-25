@@ -33,10 +33,6 @@ jobs:
             exit 0
           fi
 
-      - name: install ncc
-        run: |
-          npm i -g @vercel/ncc
-
       - name: install dependencies
         run: |
           npm install --no-bin-links
