@@ -4,21 +4,22 @@ on:
   workflow_call:
 
 jobs:
-    currentDate:   
+    releaseDate:   
         runs-on: ubuntu-latest
         steps:
-            - name: Get current date
-              run: echo "DATE=$('%Y-%m-%d')" >> $GITHUB_ENV
-    createBranch:     
+            - name: output current date
+              run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+    createBranch: 
+        needs: [releaseDate]    
         uses: ./.github/workflows/create_js_branch.yaml
         with: 
-            version: nightly-${DATE}
+            version: nightly-${{needs.releaseDate.outputs.date}}
     createRelease:
-        needs: [createBranch]
+        needs: [releaseDate, createBranch]
         permissions:
             contents: write
         uses: ./.github/workflows/create_release.yaml
         with:
-            branch: releases/nightly-${DATE}
-            version: nightly-${DATE}
+            branch: releases/nightly-nightly-${{needs.releaseDate.outputs.date}}
+            version: nightly-nightly-${{needs.releaseDate.outputs.date}}
             
