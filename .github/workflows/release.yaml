@@ -1,18 +1,18 @@
 name: release
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - CHANGELOG.md
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      changelogPath:
+        required: true
+        type: string
+        description: The path to the changelog
 
 jobs:
   changelog:
     uses: ./.github/workflows/extract_changelog.yaml
     with:
-      changelogPath: ./CHANGELOG.md
+      changelogPath: ${{inputs.changelogPath}}
   checkVersion:
     needs: changelog
     runs-on: ubuntu-latest
