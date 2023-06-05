@@ -26,13 +26,19 @@ jobs:
           tag: ${{ needs.changelog.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  createRelease:
-    needs: [checkVersion, changelog]
-    permissions:
-      contents: write
+  createBranch:
+    needs: [changelog, checkVersion]
     if: needs.checkVersion.outputs.exists == 'false'
-    uses: ./.github/workflows/create_release.yaml
+    uses: ./.github/workflows/create_js_branch.yaml
     with:
-      branch: ${{ github.ref }}
-      version: ${{ needs.changelog.outputs.version }}
-      body: ${{ needs.changelog.outputs.body }}
+        version: ${{ needs.changelog.outputs.version }}
+  createRelease:
+      needs: [changelog, checkVersion, createBranch]
+      permissions:
+        contents: write
+      if: needs.checkVersion.outputs.exists == 'false'
+      uses: ./.github/workflows/create_release.yaml
+      with:
+        branch: ${{ github.ref }}
+        version: ${{ needs.changelog.outputs.version }}
+        body: ${{ needs.changelog.outputs.body }}
