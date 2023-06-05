@@ -1,9 +1,7 @@
 name: Nightly Release
 
 on:
-  schedule:
-    - cron: '0 8 * * MON-FRI'  # Run every weekday at midnight PST
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
     createBranch:
