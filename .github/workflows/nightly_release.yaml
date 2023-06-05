@@ -6,8 +6,11 @@ on:
 jobs:
     releaseDate:   
         runs-on: ubuntu-latest
+        outputs:
+            date: ${{steps.releaseDate.outputs.date}}
         steps:
             - name: output current date
+              id: releaseDate
               run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
     createBranch: 
         needs: [releaseDate]    
