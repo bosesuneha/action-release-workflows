@@ -41,7 +41,7 @@ jobs:
    
 ```
 
-The `release` job calls the reusable workflow and takes as input the path to the CHANELOG.md file.
+The `release` job calls the reusable workflow in `action-release-workflows` and takes as input the path to the CHANELOG.md file.
 
 
 
