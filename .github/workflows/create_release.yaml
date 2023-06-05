@@ -12,7 +12,7 @@ on:
         type: string
         description: The version of the release
       body:
-        required: true
+        required: false
         type: string
         description: The body of the release
       prerelease:

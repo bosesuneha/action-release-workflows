@@ -1,0 +1,21 @@
+name: Nightly Release
+
+on:
+  schedule:
+    - cron: '0 8 * * MON-FRI'  # Run every weekday at midnight PST
+  workflow_dispatch:
+
+jobs:
+    createBranch:
+        uses: ./.github/workflows/create_js_branch.yaml
+        with:
+           version: nightly-$(date +'%Y%m%d')
+    createRelease:
+        needs: [createBranch]
+        permissions:
+            contents: write
+        uses: ./.github/workflows/create_release.yaml
+        with:
+            branch: releases/nightly-$(date +'%Y%m%d')
+            version: nightly-$(date +'%Y%m%d')
+            
