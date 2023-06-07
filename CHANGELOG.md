@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.0.4] - 2023-06-07
+-  added nightly release workflow
+
 ## [0.0.3] - 2023-05-16
 
 ### Added
