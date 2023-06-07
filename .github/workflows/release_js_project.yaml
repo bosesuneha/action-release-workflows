@@ -1,4 +1,4 @@
-name: release # for releasing action-release-workflow project
+name: release project
 
 on:
   push:
