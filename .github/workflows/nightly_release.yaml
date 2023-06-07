@@ -1,4 +1,4 @@
-name: Nightly Release
+name: nightly release
 
 on:
   workflow_call:
@@ -15,7 +15,7 @@ jobs:
     createBranch:     
         uses: ./.github/workflows/create_js_branch.yaml
         with:
-           version: nightly-$(date +'%Y%m%d')
+           version: nightly
     createRelease:
         needs: [createBranch]
         permissions:
