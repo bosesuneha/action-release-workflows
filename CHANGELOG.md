@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.0.5] - 2023-06-07
+- updated release_js_project and nightly_release workflows
+
 ## [0.0.4] - 2023-06-07
 -  added nightly release workflow
 
