@@ -19,7 +19,7 @@ The release workflow is triggered when changes are pushed to the main branch and
 3. Your release.yaml workflow file should follow a structure similar to the one outlined below:
    
 ```
-name: release
+name: release project
 
 on:
    push:
@@ -28,18 +28,16 @@ on:
       paths:
          - CHANGELOG.md
    workflow_dispatch:
-```
 
-The `release` workflow can be triggered in two ways: automatically when changes are made to the CHANGELOG.md file and pushed to the main branch, or manually through the GitHub Actions UI. 
-
-```
 jobs:
    release:
-      uses: bosesuneha/action-release-workflows/.github/workflows/release.yaml@main
+      uses: bosesuneha/action-release-workflows/.github/workflows/release_js_project.yaml@main
       with:
          changelogPath: ./CHANGELOG.md
    
 ```
+The `release project` workflow can be triggered in two ways: automatically when changes are made to the CHANGELOG.md file and pushed to the main branch, or manually through the GitHub Actions UI. 
+
 
 The `release` job calls the reusable workflow in `action-release-workflows` and takes as input the path to the CHANELOG.md file.
 
