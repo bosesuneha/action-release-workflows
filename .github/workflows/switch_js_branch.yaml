@@ -35,7 +35,6 @@ jobs:
       - name: switch or create branch
         run: |
             if git ls-remote --exit-code --heads origin ${BRANCH} ; then 
-              git fetch origin main:main
               git checkout -b tmp origin/main
               git merge -s ours ${BRANCH}
               git checkout ${BRANCH}
