@@ -17,12 +17,12 @@ jobs:
         with:
            version: nightly
     createRelease:
-        needs: [switchBranch]
+        needs: [releaseDate, switchBranch]
         permissions:
             contents: write
         uses: ./.github/workflows/create_release.yaml
         with:
             branch: releases/nightly
-            version: nightly-$(date +'%Y%m%d')
-            body: Nightly Release for $(date +'%Y%m%d')
+            version: nightly-${{needs.releaseDate.outputs.date}}
+            body: Nightly Release for ${{needs.releaseDate.outputs.date}}
             
