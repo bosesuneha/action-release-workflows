@@ -44,7 +44,7 @@ jobs:
               git branch -D tmp
               git push origin ${BRANCH}
             else
-                git checkout -b ${BRANCH}
-                git push origin ${BRANCH}
+              git checkout -b ${BRANCH}
+              git push origin ${BRANCH}
             fi
             
