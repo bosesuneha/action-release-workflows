@@ -1,4 +1,4 @@
-name: switch branch # switches into `releases/nightly` branch or creates it if it doesn't exist 
+name: switch branch # switches to `releases/nightly` branch or creates it if it doesn't exist 
 
 on:
   workflow_call:
